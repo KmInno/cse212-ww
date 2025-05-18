@@ -1,11 +1,12 @@
 public static class Arrays
 {
     /// <summary>
-    /// This function will produce an array of size 'length' starting with 'number' followed by multiples of 'number'.  For 
-    /// example, MultiplesOf(7, 5) will result in: {7, 14, 21, 28, 35}.  Assume that length is a positive
-    /// integer greater than 0.
+    /// function generates an array of doubles that are multiples of the given number.
+    /// generates an array of length 'length' where each element is a multiple of 'number'.
+    /// default value of 'number' is 0.0. because it's adoublle array
+    /// the loop starts from 0 to 'length - 1' 
+    /// calculates the multiple by multiplying 'number' with (i + 1) and assigns it to the result array.
     /// </summary>
-    /// <returns>array of doubles that are the multiples of the supplied number</returns>
     public static double[] MultiplesOf(double number, int length)
     {
         double[] result = new double[length];
@@ -17,11 +18,14 @@ public static class Arrays
     }
 
     /// <summary>
-    /// Rotate the 'data' to the right by the 'amount'.  For example, if the data is 
-    /// List<int>{1, 2, 3, 4, 5, 6, 7, 8, 9} and an amount is 3 then the list after the function runs should be 
-    /// List<int>{7, 8, 9, 1, 2, 3, 4, 5, 6}.  The value of amount will be in the range of 1 to data.Count, inclusive.
-    ///
-    /// Because a list is dynamic, this function will modify the existing data list rather than returning a new list.
+    /// function rotates the elements of a list to the right by a specified amount.
+    /// retrieve the total number of elements in the list
+    /// ensures the rotation amount is within the bounds of the list size
+    /// uses modulus (%) to handle cases where the rotation amount exceeds the list size
+    /// handles no rotation cases
+    /// extracts the last 'amount' elements from the list and stores them in a temporary list
+    /// appends the remaining elements from the original list to the temporary list
+    /// modify the original List
     /// </summary>
     public static void RotateListRight(List<int> data, int amount)
     {
