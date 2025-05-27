@@ -3,9 +3,7 @@
 /// </summary>
 public class PersonQueue
 {
-    private readonly List<Person> _queue = new();
-
-    public int Length => _queue.Count;
+    private List<Person> _queue = new List<Person>();
 
     /// <summary>
     /// Add a person to the queue
@@ -13,23 +11,25 @@ public class PersonQueue
     /// <param name="person">The person to add</param>
     public void Enqueue(Person person)
     {
-        _queue.Insert(0, person);
+        _queue.Add(person); // Add to the back
     }
 
     public Person Dequeue()
     {
-        var person = _queue[0];
+        if (_queue.Count == 0)
+            throw new InvalidOperationException("Queue is empty.");
+
+        var person = _queue[0]; // Remove from the front
         _queue.RemoveAt(0);
         return person;
     }
 
-    public bool IsEmpty()
-    {
-        return Length == 0;
-    }
+    public int Length => _queue.Count;
+
+    public bool IsEmpty() => _queue.Count == 0;
 
     public override string ToString()
     {
-        return $"[{string.Join(", ", _queue)}]";
+        return string.Join(", ", _queue.Select(p => p.Name));
     }
 }
